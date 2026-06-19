@@ -22,8 +22,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const countQuery = `SELECT COUNT(*)::int as count FROM transactions ${where}`;
 
       const [rows, countRows] = await Promise.all([
-        sql(dataQuery, [...params, limit, offset]),
-        sql(countQuery, params),
+        sql.query(dataQuery, [...params, limit, offset]),
+        sql.query(countQuery, params),
       ]);
 
       const data = rows.map((r: any) => ({ ...r, amount: Number(r.amount), createdAt: r.created_at }));

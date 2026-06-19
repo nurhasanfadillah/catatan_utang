@@ -14,7 +14,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (endDate) { conditions.push(`date <= $${i++}`); params.push(endDate); }
     const where = conditions.length ? `WHERE ${conditions.join(' AND ')}` : '';
 
-    const rows = await sql(`SELECT * FROM transactions ${where} ORDER BY date DESC, created_at DESC`, params);
+    const rows = await sql.query(`SELECT * FROM transactions ${where} ORDER BY date DESC, created_at DESC`, params);
     const data = rows.map((r: any) => ({ ...r, amount: Number(r.amount), createdAt: r.created_at }));
     return res.json(data);
   } catch (err: any) {
