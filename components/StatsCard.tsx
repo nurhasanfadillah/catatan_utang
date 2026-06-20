@@ -11,25 +11,53 @@ interface StatsCardProps {
   variant: StatsCardVariant;
 }
 
-const variantConfig: Record<StatsCardVariant, { container: string; icon: string }> = {
-  balance: { container: 'bg-brand-500/10', icon: 'text-brand-500' },
-  income:  { container: 'bg-emerald-500/10', icon: 'text-emerald-500' },
-  expense: { container: 'bg-rose-500/10', icon: 'text-rose-500' },
+const variantConfig: Record<StatsCardVariant, {
+  wrapper: string;
+  titleColor: string;
+  valueColor: string;
+  valueSize: string;
+  iconBg: string;
+  iconColor: string;
+}> = {
+  balance: {
+    wrapper: 'bg-gradient-to-br from-indigo-500 via-purple-600 to-violet-700 shadow-lg shadow-indigo-500/25',
+    titleColor: 'text-indigo-100',
+    valueColor: 'text-white',
+    valueSize: 'text-4xl',
+    iconBg: 'bg-white/20',
+    iconColor: 'text-white',
+  },
+  income: {
+    wrapper: 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 border-l-4 border-l-emerald-500',
+    titleColor: 'text-slate-500 dark:text-slate-400',
+    valueColor: 'text-slate-900 dark:text-white',
+    valueSize: 'text-2xl',
+    iconBg: 'bg-emerald-500/10',
+    iconColor: 'text-emerald-500',
+  },
+  expense: {
+    wrapper: 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 border-l-4 border-l-rose-500',
+    titleColor: 'text-slate-500 dark:text-slate-400',
+    valueColor: 'text-slate-900 dark:text-white',
+    valueSize: 'text-2xl',
+    iconBg: 'bg-rose-500/10',
+    iconColor: 'text-rose-500',
+  },
 };
 
 export const StatsCard: React.FC<StatsCardProps> = ({ title, value, icon: Icon, variant }) => {
-  const { container, icon } = variantConfig[variant];
+  const { wrapper, titleColor, valueColor, valueSize, iconBg, iconColor } = variantConfig[variant];
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 border border-gray-100 dark:border-gray-700">
+    <div className={`rounded-xl p-6 ${wrapper}`}>
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-sm font-medium text-gray-500 dark:text-gray-400">{title}</p>
-          <h3 className="text-2xl font-bold mt-2 text-gray-900 dark:text-white">
+          <p className={`text-sm font-medium ${titleColor}`}>{title}</p>
+          <h3 className={`font-bold mt-2 ${valueColor} ${valueSize}`}>
             {formatCurrency(value)}
           </h3>
         </div>
-        <div className={`p-3 rounded-lg ${container}`}>
-          <Icon className={`w-6 h-6 ${icon}`} />
+        <div className={`p-3 rounded-lg ${iconBg}`}>
+          <Icon className={`w-6 h-6 ${iconColor}`} />
         </div>
       </div>
     </div>
