@@ -1,5 +1,4 @@
 import { User } from '../types';
-import { supabase } from './supabaseClient';
 
 const USER_STORAGE_KEY = 'kasbon_user_session';
 
@@ -18,20 +17,14 @@ export const authService = {
     }
     // --- FORCE ACCESS END ---
 
-    // Query users table in Supabase
-    // Note: In a real production app with sensitive public registration, 
-    // we should use Supabase Auth (GoTrue) with hashed passwords. 
-    // This implementation uses a custom table to match the existing simple "username" flow.
-    const { data, error } = await supabase
-      .from('app_users')
-      .select('*')
-      .eq('username', username)
-      .eq('password', password)
-      .single();
-
-    if (error || !data) {
-      throw new Error('Username atau password salah');
-    }
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, password })
+    });
+    if (res.status === 401) throw new Error('Username atau password salah');
+    if (!res.ok) throw new Error(`Login error ${res.status}`);
+    const data = await res.json();
 
     const userData: User = {
       username: data.username,

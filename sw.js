@@ -1,4 +1,4 @@
-const CACHE_NAME = 'keuangan-produksi-v2';
+const CACHE_NAME = 'keuangan-produksi-v3';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
@@ -9,8 +9,7 @@ const ASSETS_TO_CACHE = [
   'https://aistudiocdn.com/react-dom@^19.2.1/',
   'https://aistudiocdn.com/lucide-react@^0.556.0',
   'https://esm.sh/jspdf@2.5.1',
-  'https://esm.sh/jspdf-autotable@3.8.1',
-  'https://esm.sh/@supabase/supabase-js@2.45.1'
+  'https://esm.sh/jspdf-autotable@3.8.1'
 ];
 
 // Install Service Worker & Cache Static Assets
@@ -43,8 +42,8 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
   
-  // 1. Network Only untuk API Supabase (Agar data selalu Realtime)
-  if (url.hostname.includes('supabase.co')) {
+  // 1. Network Only untuk Vercel API Routes (data selalu realtime)
+  if (url.pathname.startsWith('/api/')) {
     event.respondWith(fetch(event.request));
     return;
   }
