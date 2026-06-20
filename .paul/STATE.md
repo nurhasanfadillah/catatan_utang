@@ -2,35 +2,37 @@
 
 ## Current Position
 
-Phase: 02 — NeonDB Migration — **COMPLETE ✓**
-Plan: 02-03 — Frontend Migration — LOOP COMPLETE ✓
-Status: Phase 02 selesai — app live di production, Supabase 100% diganti NeonDB
-Last activity: 2026-06-20 — Phase 02 complete, 02-03 UNIFY selesai
+Phase: 03 — UI Modernization — **Discovery done, belum ada PLAN**
+Plan: 03-01 — Tailwind PostCSS Migration — belum dibuat
+Status: Discovery selesai, siap mulai planning Phase 03
+Last activity: 2026-06-20 — Discovery + DISCOVERY.md dibuat
 
 Progress:
 - Phase 01: [██████████] 100% (Vercel Migration — COMPLETE ✓)
-- Phase 02: [██████████] 100% (02-01 ✓, 02-02 ✓, 02-03 ✓ — COMPLETE ✓)
+- Phase 02: [██████████] 100% (NeonDB Migration — COMPLETE ✓)
+- Phase 03: [░░░░░░░░░░] 0% (UI Modernization — Discovery done)
 
 ## Loop Position
 
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 02 complete — siap Phase 03]
+  ○        ○        ○     [Belum ada plan — mulai dengan /paul:plan]
 ```
 
 ## Session Continuity
 
 Last session: 2026-06-20
-Stopped at: Phase 02 NeonDB Migration selesai penuh
-Next action: /paul:plan (Phase 03 — jika ada, atau milestone complete)
-Resume file: .paul/phases/02-neondb-migration/02-03-SUMMARY.md
+Stopped at: Discovery Phase 03 selesai — paused by user (context limit)
+Next action: /paul:plan (Phase 03, Plan 01 — Tailwind PostCSS Migration)
+Resume file: .paul/phases/03-ui-modernization/DISCOVERY.md
 
 ## Notes untuk sesi berikutnya
 - API routes pakai raw neon SQL (`neon()` dari `@neondatabase/serverless`) — BUKAN Drizzle ORM
-- Simple queries: tagged template `sql\`SELECT...\``; dynamic WHERE: `sql.query(str, params)` dengan `$1,$2,...`
-- date field dari NeonDB return ISO string (`2026-06-15T00:00:00.000Z`) — frontend harus handle parsing di 02-03
-- Admin password di NeonDB bukan 'admin123' — cek via Neon SQL Editor sebelum login testing di 02-03
-- Backdoor login (admin/root) masih di services/auth.ts frontend — tidak dipindah ke API
+- Admin password di NeonDB bukan 'admin123' — perlu cek via Neon SQL Editor
+- Phase 03 discovery sudah selesai di `.paul/phases/03-ui-modernization/DISCOVERY.md`
+- StatsCard perlu refactor: `colorClass: string` → `variant: 'balance'|'income'|'expense'` (Tailwind purge issue)
+- Palette baru: slate-900/950 bg, indigo-500 accent, gradient indigo→violet untuk hero
+- 3 plans: 03-01 (Tailwind PostCSS), 03-02 (Login+Sidebar+Header+StatsCard), 03-03 (TransactionList+Modals)
 
 ## Decisions
 
