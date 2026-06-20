@@ -47,6 +47,8 @@ function App() {
   
   // Balance State
   const [globalTotalBalance, setGlobalTotalBalance] = useState(0);
+  const [globalTotalIncome, setGlobalTotalIncome] = useState(0);
+  const [globalTotalExpense, setGlobalTotalExpense] = useState(0);
   const [pageStartingBalance, setPageStartingBalance] = useState(0);
 
   // UI State
@@ -111,6 +113,8 @@ function App() {
     try {
       const summary = await api.getBalanceSummary();
       setGlobalTotalBalance(summary.balance);
+      setGlobalTotalIncome(summary.income);
+      setGlobalTotalExpense(summary.expense);
 
       const { data, count } = await api.getTransactions(
         targetPage, 
@@ -353,10 +357,30 @@ function App() {
           
           {activeTab === 'dashboard' && (
             <div className="space-y-8 animate-in fade-in duration-500">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <StatsCard title="Saldo Saat Ini" value={globalTotalBalance} icon={Wallet} variant="balance" />
-                <StatsCard title="Total Tagihan (Halaman Ini)" value={processedData.summary.income} icon={TrendingUp} variant="income" />
-                <StatsCard title="Total Kasbon (Halaman Ini)" value={processedData.summary.expense} icon={TrendingDown} variant="expense" />
+              <StatsCard title="Saldo Saat Ini" value={globalTotalBalance} icon={Wallet} variant="balance" />
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-slate-800 rounded-xl p-4 border border-slate-700 border-l-4 border-l-emerald-500">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-xs font-medium text-slate-400">Total Tagihan</p>
+                      <p className="text-lg font-bold text-white mt-1">{formatCurrency(globalTotalIncome)}</p>
+                    </div>
+                    <div className="p-2 rounded-lg bg-emerald-500/10">
+                      <TrendingUp className="w-4 h-4 text-emerald-500" />
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-slate-800 rounded-xl p-4 border border-slate-700 border-l-4 border-l-rose-500">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-xs font-medium text-slate-400">Total Kasbon</p>
+                      <p className="text-lg font-bold text-white mt-1">{formatCurrency(globalTotalExpense)}</p>
+                    </div>
+                    <div className="p-2 rounded-lg bg-rose-500/10">
+                      <TrendingDown className="w-4 h-4 text-rose-500" />
+                    </div>
+                  </div>
+                </div>
               </div>
               <div>
                 <div className="flex items-center justify-between mb-4">

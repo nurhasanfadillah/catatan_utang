@@ -2,10 +2,10 @@
 
 ## Current Position
 
-Phase: 05 — Kasbon UI Improvement — **COMPLETE ✓**
-Plan: 05-02 — Dashboard View Fix — **COMPLETE**
-Status: Loop tertutup — Phase 05 selesai
-Last activity: 2026-06-20 — Phase 05 Kasbon UI Improvement COMPLETE
+Phase: 06 — Dashboard Stats Global — **COMPLETE ✓**
+Plan: 06-01 unified
+Status: Phase 06 complete, siap untuk phase berikutnya
+Last activity: 2026-06-20 — Phase 06 COMPLETE via UNIFY
 
 Progress:
 - Phase 01: [██████████] 100% (Vercel Migration — COMPLETE ✓)
@@ -13,20 +13,21 @@ Progress:
 - Phase 03: [██████████] 100% (UI Modernization — 03-01✓ 03-02✓ 03-03✓ COMPLETE ✓)
 - Phase 04: [██████████] 100% (Dashboard View Fix — 04-01✓ COMPLETE ✓)
 - Phase 05: [██████████] 100% (Kasbon UI Improvement — 05-01✓ 05-02✓ COMPLETE ✓)
+- Phase 06: [██████████] 100% (Dashboard Stats Global — 06-01✓ COMPLETE ✓)
 
 ## Loop Position
 
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 05 COMPLETE — loop tertutup]
+  ✓        ✓        ✓     [Phase 06 complete — loop closed]
 ```
 
 ## Session Continuity
 
 Last session: 2026-06-20
-Stopped at: Phase 05 COMPLETE — loop tertutup
-Next action: Deploy ke Vercel untuk visual verification, atau diskusi fase selanjutnya
-Resume file: .paul/phases/05-kasbon-ui-improvement/05-02-SUMMARY.md
+Stopped at: Phase 06 complete
+Next action: /paul:plan untuk phase berikutnya (tentukan dengan user)
+Resume file: .paul/STATE.md
 
 ## Notes untuk sesi berikutnya
 - API routes pakai raw neon SQL (`neon()` dari `@neondatabase/serverless`) — BUKAN Drizzle ORM
@@ -52,3 +53,5 @@ Resume file: .paul/phases/05-kasbon-ui-improvement/05-02-SUMMARY.md
 | 9 | Pure Tailwind redesign (tanpa shadcn/ui) | Faster, less risk, preserves existing logic — Phase 03 |
 | 10 | Visual checkpoint dilewati di 03-03 | Dev mode tidak support DB/API — verify di Vercel deployment |
 | 11 | userRole="user" bukan "viewer" di dashboard TransactionList | UserRole type hanya 'admin'\|'user' — 'viewer' tidak valid TypeScript |
+| 12 | compact cards dibuat inline di App.tsx, bukan via StatsCard | Tidak perlu ubah component — scope minimal, styling custom per kebutuhan |
+| 13 | processedData.summary tetap dipakai di tab Data filter bar | Dua concern terpisah: global stats (API) vs page stats (processedData) |
