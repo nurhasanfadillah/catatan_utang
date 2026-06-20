@@ -352,7 +352,7 @@ function App() {
           {activeTab === 'dashboard' && (
             <div className="space-y-8 animate-in fade-in duration-500">
               <div className="grid grid-cols-1 gap-6">
-                <StatsCard title="Saldo Saat Ini" value={globalTotalBalance} icon={Wallet} colorClass="bg-brand-500 text-brand-500" />
+                <StatsCard title="Saldo Saat Ini" value={globalTotalBalance} icon={Wallet} variant="balance" />
               </div>
               <div>
                 <div className="flex items-center justify-between mb-4">

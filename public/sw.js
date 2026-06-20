@@ -1,15 +1,9 @@
-const CACHE_NAME = 'keuangan-produksi-v3';
+const CACHE_NAME = 'keuangan-produksi-v4';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/manifest.json',
-  'https://cdn.tailwindcss.com',
   'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap',
-  'https://aistudiocdn.com/react@^19.2.1',
-  'https://aistudiocdn.com/react-dom@^19.2.1/',
-  'https://aistudiocdn.com/lucide-react@^0.556.0',
-  'https://esm.sh/jspdf@2.5.1',
-  'https://esm.sh/jspdf-autotable@3.8.1'
 ];
 
 // Install Service Worker & Cache Static Assets
