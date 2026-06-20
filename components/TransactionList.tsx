@@ -1,6 +1,6 @@
 import React from 'react';
 import { TransactionWithBalance, TransactionType, Transaction, UserRole } from '../types';
-import { Edit2, Trash2, ArrowDownCircle, ArrowUpCircle } from 'lucide-react';
+import { Edit2, Trash2, ArrowDownCircle, ArrowUpCircle, Inbox } from 'lucide-react';
 import { formatCurrency, formatDate } from '../utils/formatters';
 
 interface TransactionListProps {
@@ -16,7 +16,9 @@ export const TransactionList: React.FC<TransactionListProps> = ({ transactions, 
   if (transactions.length === 0) {
     return (
       <div className="text-center py-20 bg-slate-800 rounded-xl border border-slate-700">
-        <p className="text-slate-400">Belum ada data transaksi.</p>
+        <Inbox className="mx-auto mb-3 text-slate-600" size={40} />
+        <p className="text-slate-400 font-medium">Tidak ada data ditemukan.</p>
+        <p className="text-slate-500 text-sm mt-1">Coba ubah filter atau tambah data baru.</p>
       </div>
     );
   }
@@ -57,7 +59,7 @@ export const TransactionList: React.FC<TransactionListProps> = ({ transactions, 
               <div>
                 <p className="text-xs text-slate-400 mb-1">Nominal</p>
                 <p className={`font-semibold font-mono ${
-                  t.type === TransactionType.INCOME ? 'text-emerald-600' : 'text-rose-600'
+                  t.type === TransactionType.INCOME ? 'text-emerald-400' : 'text-rose-400'
                 }`}>
                   {t.type === TransactionType.INCOME ? '+' : '-'}{formatCurrency(t.amount)}
                 </p>
@@ -82,7 +84,7 @@ export const TransactionList: React.FC<TransactionListProps> = ({ transactions, 
                 <th className="px-6 py-3 font-medium">Keterangan</th>
                 <th className="px-6 py-3 font-medium text-center">Tanggal</th>
                 <th className="px-6 py-3 font-medium text-right text-emerald-600">Tagihan (Masuk)</th>
-                <th className="px-6 py-3 font-medium text-right text-rose-600">Diterima (Keluar)</th>
+                <th className="px-6 py-3 font-medium text-right text-rose-600">Kasbon (Keluar)</th>
                 <th className="px-6 py-3 font-medium text-right">Saldo</th>
                 {canEdit && <th className="px-6 py-3 font-medium text-center">Aksi</th>}
               </tr>
@@ -96,10 +98,10 @@ export const TransactionList: React.FC<TransactionListProps> = ({ transactions, 
                   <td className="px-6 py-4 text-center text-slate-400">
                     {formatDate(t.date)}
                   </td>
-                  <td className="px-6 py-4 text-right font-medium font-mono text-emerald-600">
+                  <td className="px-6 py-4 text-right font-medium font-mono text-emerald-400">
                     {t.type === TransactionType.INCOME ? formatCurrency(t.amount) : '-'}
                   </td>
-                  <td className="px-6 py-4 text-right font-medium font-mono text-rose-600">
+                  <td className="px-6 py-4 text-right font-medium font-mono text-rose-400">
                     {t.type === TransactionType.EXPENSE ? formatCurrency(t.amount) : '-'}
                   </td>
                   <td className={`px-6 py-4 text-right font-bold font-mono ${

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { 
-  Settings, 
-  Moon, 
+import {
+  Settings,
+  Moon,
   Sun,
   Wallet,
   Filter,
@@ -12,7 +12,9 @@ import {
   ChevronDown,
   ChevronUp,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  TrendingUp,
+  TrendingDown
 } from 'lucide-react';
 
 import { Transaction, TransactionType, User } from './types';
@@ -351,8 +353,10 @@ function App() {
           
           {activeTab === 'dashboard' && (
             <div className="space-y-8 animate-in fade-in duration-500">
-              <div className="grid grid-cols-1 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <StatsCard title="Saldo Saat Ini" value={globalTotalBalance} icon={Wallet} variant="balance" />
+                <StatsCard title="Total Tagihan (Halaman Ini)" value={processedData.summary.income} icon={TrendingUp} variant="income" />
+                <StatsCard title="Total Kasbon (Halaman Ini)" value={processedData.summary.expense} icon={TrendingDown} variant="expense" />
               </div>
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -427,10 +431,11 @@ function App() {
 
                    {isFilterActive && (
                     <div className="mt-4 pt-4 border-t border-slate-700/50 flex flex-wrap gap-4 text-sm animate-in fade-in">
-                      <div className="px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 border border-emerald-100 dark:border-emerald-800/30">
+                      <span className="text-xs text-slate-500 self-center">Halaman ini:</span>
+                      <div className="px-3 py-1 rounded-full bg-emerald-900/20 text-emerald-300 border border-emerald-800/30">
                         <span className="text-xs opacity-70">Masuk:</span> <strong>{formatCurrency(processedData.summary.income)}</strong>
                       </div>
-                      <div className="px-3 py-1 rounded-full bg-rose-50 dark:bg-rose-900/20 text-rose-700 dark:text-rose-300 border border-rose-100 dark:border-rose-800/30">
+                      <div className="px-3 py-1 rounded-full bg-rose-900/20 text-rose-300 border border-rose-800/30">
                         <span className="text-xs opacity-70">Keluar:</span> <strong>{formatCurrency(processedData.summary.expense)}</strong>
                       </div>
                       <div className="px-3 py-1 rounded-full bg-slate-700 text-slate-300">
@@ -448,23 +453,31 @@ function App() {
                 />
 
                 {/* Pagination Controls */}
-                {!isFilterActive && totalCount > 0 && (
+                {totalCount > 0 && (
                   <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-700">
                     <div className="text-sm text-slate-400 order-2 sm:order-1">
-                      Menampilkan <span className="font-semibold text-slate-100">{((page - 1) * pageSize) + 1}</span> sampai <span className="font-semibold text-slate-100">{Math.min(page * pageSize, totalCount)}</span> dari <span className="font-semibold text-slate-100">{totalCount}</span> data
+                      Menampilkan{' '}
+                      <span className="font-semibold text-slate-100">{((page - 1) * pageSize) + 1}</span>
+                      {' '}sampai{' '}
+                      <span className="font-semibold text-slate-100">{Math.min(page * pageSize, totalCount)}</span>
+                      {' '}dari{' '}
+                      <span className="font-semibold text-slate-100">{totalCount}</span>
+                      {' '}data
                     </div>
 
                     <div className="flex items-center gap-4 order-1 sm:order-2 w-full sm:w-auto justify-between sm:justify-end">
-                      <select
-                        value={pageSize}
-                        onChange={handlePageSizeChange}
-                        className="h-9 px-2 rounded-lg border border-slate-600 bg-slate-800 text-sm text-slate-300 outline-none focus:ring-2 focus:ring-indigo-500"
-                      >
-                        <option value={10}>10 / halaman</option>
-                        <option value={25}>25 / halaman</option>
-                        <option value={50}>50 / halaman</option>
-                        <option value={100}>100 / halaman</option>
-                      </select>
+                      {!isFilterActive && (
+                        <select
+                          value={pageSize}
+                          onChange={handlePageSizeChange}
+                          className="h-9 px-2 rounded-lg border border-slate-600 bg-slate-800 text-sm text-slate-300 outline-none focus:ring-2 focus:ring-indigo-500"
+                        >
+                          <option value={10}>10 / halaman</option>
+                          <option value={25}>25 / halaman</option>
+                          <option value={50}>50 / halaman</option>
+                          <option value={100}>100 / halaman</option>
+                        </select>
+                      )}
 
                       <div className="flex items-center gap-1">
                         <button
@@ -475,28 +488,30 @@ function App() {
                           <ChevronLeft size={16} />
                         </button>
 
-                        <div className="hidden sm:flex items-center gap-1">
-                          {getPageNumbers().map((p, idx) => (
-                            <React.Fragment key={idx}>
-                              {p === '...' ? (
-                                <span className="px-2 text-slate-500">...</span>
-                              ) : (
-                                <button
-                                  onClick={() => handlePageChange(p as number)}
-                                  className={`min-w-[32px] h-8 px-2 rounded-lg text-sm font-medium transition-colors ${
-                                    page === p
-                                      ? 'bg-indigo-600 text-white shadow-indigo-500/30'
-                                      : 'text-slate-400 hover:bg-slate-700'
-                                  }`}
-                                >
-                                  {p}
-                                </button>
-                              )}
-                            </React.Fragment>
-                          ))}
-                        </div>
+                        {!isFilterActive && (
+                          <div className="hidden sm:flex items-center gap-1">
+                            {getPageNumbers().map((p, idx) => (
+                              <React.Fragment key={idx}>
+                                {p === '...' ? (
+                                  <span className="px-2 text-slate-500">...</span>
+                                ) : (
+                                  <button
+                                    onClick={() => handlePageChange(p as number)}
+                                    className={`min-w-[32px] h-8 px-2 rounded-lg text-sm font-medium transition-colors ${
+                                      page === p
+                                        ? 'bg-indigo-600 text-white shadow-indigo-500/30'
+                                        : 'text-slate-400 hover:bg-slate-700'
+                                    }`}
+                                  >
+                                    {p}
+                                  </button>
+                                )}
+                              </React.Fragment>
+                            ))}
+                          </div>
+                        )}
 
-                        <div className="sm:hidden flex items-center px-2 text-sm font-medium text-slate-300">
+                        <div className={`flex items-center px-2 text-sm font-medium text-slate-300 ${!isFilterActive ? 'sm:hidden' : ''}`}>
                           {page} / {totalPages}
                         </div>
 
@@ -510,31 +525,6 @@ function App() {
                       </div>
                     </div>
                   </div>
-                )}
-
-                {isFilterActive && totalCount > 0 && (
-                   <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-700">
-                     <div className="text-sm text-slate-400 order-2 sm:order-1">
-                      Menampilkan <span className="font-semibold text-slate-100">{((page - 1) * pageSize) + 1}</span> sampai <span className="font-semibold text-slate-100">{Math.min(page * pageSize, totalCount)}</span> dari <span className="font-semibold text-slate-100">{totalCount}</span> data
-                    </div>
-                    <div className="flex items-center gap-2 order-1 sm:order-2">
-                       <button
-                          onClick={() => handlePageChange(page - 1)}
-                          disabled={page === 1}
-                          className="p-2 rounded-lg border border-slate-700 text-slate-400 hover:bg-slate-700 disabled:opacity-40"
-                        >
-                          <ChevronLeft size={16} />
-                        </button>
-                        <span className="text-sm font-medium text-slate-300">{page} / {totalPages}</span>
-                        <button
-                          onClick={() => handlePageChange(page + 1)}
-                          disabled={page === totalPages}
-                          className="p-2 rounded-lg border border-slate-700 text-slate-400 hover:bg-slate-700 disabled:opacity-40"
-                        >
-                          <ChevronRight size={16} />
-                        </button>
-                    </div>
-                   </div>
                 )}
 
               </div>
