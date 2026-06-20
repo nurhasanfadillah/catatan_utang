@@ -2,29 +2,30 @@
 
 ## Current Position
 
-Phase: 03 — UI Modernization — **COMPLETE ✓**
-Plan: 03-03 — TransactionList+Forms+Modals+App Redesign — **COMPLETE**
-Status: Loop tertutup — Phase 03 selesai
-Last activity: 2026-06-20 — Phase 03 UI Modernization COMPLETE (commit dafe5d6)
+Phase: 04 — Dashboard View Fix — **COMPLETE ✓**
+Plan: 04-01 — Dashboard pure view-only — **COMPLETE**
+Status: Loop tertutup — Phase 04 selesai
+Last activity: 2026-06-20 — Phase 04 Dashboard View Fix COMPLETE
 
 Progress:
 - Phase 01: [██████████] 100% (Vercel Migration — COMPLETE ✓)
 - Phase 02: [██████████] 100% (NeonDB Migration — COMPLETE ✓)
 - Phase 03: [██████████] 100% (UI Modernization — 03-01✓ 03-02✓ 03-03✓ COMPLETE ✓)
+- Phase 04: [██████████] 100% (Dashboard View Fix — 04-01✓ COMPLETE ✓)
 
 ## Loop Position
 
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ✓        ✓     [Phase 03 COMPLETE — semua fase selesai]
+  ✓        ✓        ✓     [Phase 04 COMPLETE — loop tertutup]
 ```
 
 ## Session Continuity
 
 Last session: 2026-06-20
-Stopped at: Phase 03 COMPLETE — loop tertutup, semua 3 phases selesai
+Stopped at: Phase 04 COMPLETE — loop tertutup
 Next action: Deploy ke Vercel untuk visual verification, atau diskusi fase selanjutnya
-Resume file: .paul/phases/03-ui-modernization/03-03-SUMMARY.md
+Resume file: .paul/phases/04-dashboard-view-fix/04-01-SUMMARY.md
 
 ## Notes untuk sesi berikutnya
 - API routes pakai raw neon SQL (`neon()` dari `@neondatabase/serverless`) — BUKAN Drizzle ORM
@@ -33,6 +34,7 @@ Resume file: .paul/phases/03-ui-modernization/03-03-SUMMARY.md
 - Gunakan backdoor `admin`/`root` hanya untuk bypass login di dev mode (tanpa DB)
 - Design system FINAL: slate-900/950 bg, slate-800 cards, indigo-500 accent, gradient indigo→violet CTA
 - brand-* tokens masih ada di tailwind.config.ts — tidak dipakai, bisa dihapus kapan saja
+- Dashboard = pure view-only (Phase 04): Header hides action buttons, TransactionList pakai userRole="user"
 
 ## Decisions
 
@@ -48,3 +50,4 @@ Resume file: .paul/phases/03-ui-modernization/03-03-SUMMARY.md
 | 8 | Credentials tetap hardcoded, password system tidak berubah | Keputusan user — bukan scope fase ini |
 | 9 | Pure Tailwind redesign (tanpa shadcn/ui) | Faster, less risk, preserves existing logic — Phase 03 |
 | 10 | Visual checkpoint dilewati di 03-03 | Dev mode tidak support DB/API — verify di Vercel deployment |
+| 11 | userRole="user" bukan "viewer" di dashboard TransactionList | UserRole type hanya 'admin'\|'user' — 'viewer' tidak valid TypeScript |

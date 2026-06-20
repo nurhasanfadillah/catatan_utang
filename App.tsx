@@ -359,7 +359,7 @@ function App() {
                   <h3 className="text-lg font-bold text-slate-100">Transaksi Terakhir</h3>
                   <button onClick={() => setActiveTab('data')} className="text-indigo-400 hover:text-indigo-300 text-sm font-medium hover:underline">Lihat Semua</button>
                 </div>
-                <TransactionList transactions={processedData.allTransactionsWithBalance.slice(0, 5)} onEdit={() => {}} onDelete={() => {}} userRole={user.role} />
+                <TransactionList transactions={processedData.allTransactionsWithBalance.slice(0, 5)} onEdit={() => {}} onDelete={() => {}} userRole="user" />
               </div>
             </div>
           )}

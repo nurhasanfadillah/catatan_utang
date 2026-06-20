@@ -45,16 +45,20 @@ export const Header: React.FC<HeaderProps> = ({
           {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
         </button>
 
-        <button onClick={onOpenExport} className="flex items-center justify-center p-2.5 sm:px-4 sm:py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
-          <FileDown size={20} />
-          <span className="hidden sm:inline ml-2 font-medium">Ekspor</span>
-        </button>
+        {activeTab !== 'dashboard' && (
+          <>
+            <button onClick={onOpenExport} className="flex items-center justify-center p-2.5 sm:px-4 sm:py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
+              <FileDown size={20} />
+              <span className="hidden sm:inline ml-2 font-medium">Ekspor</span>
+            </button>
 
-        {isAdmin && (
-          <button onClick={onOpenForm} className="flex items-center gap-2 bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-600 hover:to-violet-700 text-white px-4 py-2.5 sm:px-5 rounded-xl text-sm font-medium shadow-lg shadow-indigo-500/20 transition-all hover:scale-105 active:scale-95">
-            <Plus size={20} />
-            <span className="hidden sm:inline">Tambah Data</span>
-          </button>
+            {isAdmin && (
+              <button onClick={onOpenForm} className="flex items-center gap-2 bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-600 hover:to-violet-700 text-white px-4 py-2.5 sm:px-5 rounded-xl text-sm font-medium shadow-lg shadow-indigo-500/20 transition-all hover:scale-105 active:scale-95">
+                <Plus size={20} />
+                <span className="hidden sm:inline">Tambah Data</span>
+              </button>
+            )}
+          </>
         )}
       </div>
     </header>
