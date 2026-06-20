@@ -299,9 +299,9 @@ function App() {
 
   if (!user) {
     return (
-      <div className="font-sans text-gray-900 dark:text-gray-100 bg-gray-50 dark:bg-gray-900 min-h-screen">
+      <div className="font-sans text-slate-100 bg-slate-950 min-h-screen">
          <div className="absolute top-4 right-4 z-50">
-           <button onClick={toggleTheme} className="p-2.5 rounded-xl text-gray-500 bg-white hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 shadow-sm">
+           <button onClick={toggleTheme} className="p-2.5 rounded-xl text-slate-400 bg-slate-800 hover:bg-slate-700 border border-slate-700 shadow-sm">
               {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
             </button>
         </div>
@@ -311,13 +311,13 @@ function App() {
   }
 
   return (
-    <div className="flex h-screen bg-gray-50 dark:bg-gray-900 overflow-hidden font-sans">
+    <div className="flex h-screen bg-slate-950 overflow-hidden font-sans">
       
       {(isLoading || isExporting) && (
         <div className="fixed inset-0 z-[70] bg-black/20 backdrop-blur-[1px] flex items-center justify-center">
-          <div className="bg-white dark:bg-gray-800 p-4 rounded-2xl shadow-xl flex items-center gap-3">
-             <Loader2 className="animate-spin text-brand-600" size={24} />
-             <span className="font-medium text-gray-700 dark:text-gray-200">
+          <div className="bg-slate-800 p-4 rounded-2xl shadow-xl flex items-center gap-3">
+             <Loader2 className="animate-spin text-indigo-400" size={24} />
+             <span className="font-medium text-slate-200">
                {isExporting ? 'Menyiapkan PDF...' : 'Memproses Data...'}
              </span>
           </div>
@@ -347,7 +347,7 @@ function App() {
           isAdmin={isAdmin}
         />
 
-        <div className="flex-1 overflow-y-auto p-4 md:p-8 space-y-8 bg-gray-50 dark:bg-gray-900 scroll-smooth">
+        <div className="flex-1 overflow-y-auto p-4 md:p-8 space-y-8 bg-slate-900 scroll-smooth">
           
           {activeTab === 'dashboard' && (
             <div className="space-y-8 animate-in fade-in duration-500">
@@ -356,8 +356,8 @@ function App() {
               </div>
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">Transaksi Terakhir</h3>
-                  <button onClick={() => setActiveTab('data')} className="text-brand-600 hover:text-brand-700 text-sm font-medium hover:underline">Lihat Semua</button>
+                  <h3 className="text-lg font-bold text-slate-100">Transaksi Terakhir</h3>
+                  <button onClick={() => setActiveTab('data')} className="text-indigo-400 hover:text-indigo-300 text-sm font-medium hover:underline">Lihat Semua</button>
                 </div>
                 <TransactionList transactions={processedData.allTransactionsWithBalance.slice(0, 5)} onEdit={() => {}} onDelete={() => {}} userRole={user.role} />
               </div>
@@ -366,32 +366,32 @@ function App() {
 
           {activeTab === 'data' && (
             <div className="space-y-6 animate-in slide-in-from-right duration-300">
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm">
+              <div className="bg-slate-800 p-6 rounded-2xl border border-slate-700 shadow-sm">
                 
                 {/* Header & Balance */}
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
                   <div>
-                    <h2 className="text-xl font-bold text-gray-900 dark:text-white">Riwayat Lengkap</h2>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Daftar semua aktivitas keuangan yang tercatat.</p>
+                    <h2 className="text-xl font-bold text-slate-100">Riwayat Lengkap</h2>
+                    <p className="text-sm text-slate-400 mt-1">Daftar semua aktivitas keuangan yang tercatat.</p>
                   </div>
                   <div className="flex flex-col items-end">
-                    <span className="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Total Saldo</span>
-                    <p className={`text-3xl font-bold tracking-tight ${globalTotalBalance < 0 ? 'text-rose-500' : 'text-brand-600'}`}>
+                    <span className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-1">Total Saldo</span>
+                    <p className={`text-3xl font-bold tracking-tight ${globalTotalBalance < 0 ? 'text-rose-500' : 'text-indigo-400'}`}>
                       {formatCurrency(globalTotalBalance)}
                     </p>
                   </div>
                 </div>
 
                 {/* Filter Bar */}
-                <div className="bg-gray-50 dark:bg-gray-700/30 p-4 rounded-xl mb-6 border border-gray-200 dark:border-gray-700/50 transition-all duration-300">
+                <div className="bg-slate-900/50 p-4 rounded-xl mb-6 border border-slate-700/50 transition-all duration-300">
                   <div className="flex items-center justify-between mb-2">
-                    <button onClick={() => setIsFilterOpen(!isFilterOpen)} className="flex items-center gap-2 text-sm font-semibold text-gray-700 dark:text-gray-200 focus:outline-none hover:text-brand-600 dark:hover:text-brand-400 transition-colors">
-                      <Filter size={16} className="text-brand-600 dark:text-brand-400" />
+                    <button onClick={() => setIsFilterOpen(!isFilterOpen)} className="flex items-center gap-2 text-sm font-semibold text-slate-300 focus:outline-none hover:text-indigo-400 transition-colors">
+                      <Filter size={16} className="text-indigo-500" />
                       <span>Filter Data</span>
-                      {isFilterOpen ? <ChevronUp size={16} className="text-gray-400" /> : <ChevronDown size={16} className="text-gray-400" />}
+                      {isFilterOpen ? <ChevronUp size={16} className="text-slate-500" /> : <ChevronDown size={16} className="text-slate-500" />}
                     </button>
                     {isFilterActive && (
-                      <button onClick={resetFilters} className="text-xs flex items-center gap-1 text-gray-500 hover:text-rose-600 dark:text-gray-400 dark:hover:text-rose-400 transition-colors">
+                      <button onClick={resetFilters} className="text-xs flex items-center gap-1 text-slate-400 hover:text-rose-400 transition-colors">
                         <RefreshCcw size={12} /> Reset Filter
                       </button>
                     )}
@@ -400,25 +400,25 @@ function App() {
                   {isFilterOpen && (
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mt-4 animate-in fade-in slide-in-from-top-2 duration-200">
                       <div className="md:col-span-4">
-                        <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1.5">Jenis Transaksi</label>
-                        <select value={filterType} onChange={(e) => setFilterType(e.target.value as any)} className="w-full h-[42px] px-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-brand-500 outline-none">
+                        <label className="block text-xs font-medium text-slate-400 mb-1.5">Jenis Transaksi</label>
+                        <select value={filterType} onChange={(e) => setFilterType(e.target.value as any)} className="w-full h-[42px] px-3 rounded-lg border border-slate-600 bg-slate-800 text-slate-100 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
                           <option value="ALL">Semua Transaksi</option>
                           <option value={TransactionType.INCOME}>Tagihan (Masuk)</option>
                           <option value={TransactionType.EXPENSE}>Kasbon (Keluar)</option>
                         </select>
                       </div>
                       <div className="md:col-span-8">
-                        <label className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1.5">Periode Waktu</label>
+                        <label className="block text-xs font-medium text-slate-400 mb-1.5">Periode Waktu</label>
                         <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-2">
                           <div className="relative flex-1 w-full">
-                            <Calendar size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                            <input type="date" value={dateRange.start} onChange={(e) => setDateRange({...dateRange, start: e.target.value})} className="w-full h-[42px] pl-10 pr-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-brand-500 outline-none" />
+                            <Calendar size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                            <input type="date" value={dateRange.start} onChange={(e) => setDateRange({...dateRange, start: e.target.value})} className="w-full h-[42px] pl-10 pr-3 rounded-lg border border-slate-600 bg-slate-800 text-slate-100 text-sm focus:ring-2 focus:ring-indigo-500 outline-none" />
                           </div>
-                          <span className="hidden sm:block text-gray-400"><ArrowRight size={16} /></span>
-                          <span className="sm:hidden text-gray-400 text-xs text-center font-medium">s/d</span>
+                          <span className="hidden sm:block text-slate-400"><ArrowRight size={16} /></span>
+                          <span className="sm:hidden text-slate-400 text-xs text-center font-medium">s/d</span>
                           <div className="relative flex-1 w-full">
-                            <Calendar size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                            <input type="date" value={dateRange.end} onChange={(e) => setDateRange({...dateRange, end: e.target.value})} className="w-full h-[42px] pl-10 pr-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white text-sm focus:ring-2 focus:ring-brand-500 outline-none" />
+                            <Calendar size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                            <input type="date" value={dateRange.end} onChange={(e) => setDateRange({...dateRange, end: e.target.value})} className="w-full h-[42px] pl-10 pr-3 rounded-lg border border-slate-600 bg-slate-800 text-slate-100 text-sm focus:ring-2 focus:ring-indigo-500 outline-none" />
                           </div>
                         </div>
                       </div>
@@ -426,14 +426,14 @@ function App() {
                   )}
 
                    {isFilterActive && (
-                    <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700/50 flex flex-wrap gap-4 text-sm animate-in fade-in">
+                    <div className="mt-4 pt-4 border-t border-slate-700/50 flex flex-wrap gap-4 text-sm animate-in fade-in">
                       <div className="px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-300 border border-emerald-100 dark:border-emerald-800/30">
                         <span className="text-xs opacity-70">Masuk:</span> <strong>{formatCurrency(processedData.summary.income)}</strong>
                       </div>
                       <div className="px-3 py-1 rounded-full bg-rose-50 dark:bg-rose-900/20 text-rose-700 dark:text-rose-300 border border-rose-100 dark:border-rose-800/30">
                         <span className="text-xs opacity-70">Keluar:</span> <strong>{formatCurrency(processedData.summary.expense)}</strong>
                       </div>
-                      <div className="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300">
+                      <div className="px-3 py-1 rounded-full bg-slate-700 text-slate-300">
                         <span className="text-xs opacity-70">Data:</span> <strong>{processedData.summary.count} transaksi</strong>
                       </div>
                     </div>
@@ -449,16 +449,16 @@ function App() {
 
                 {/* Pagination Controls */}
                 {!isFilterActive && totalCount > 0 && (
-                  <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-gray-100 dark:border-gray-700">
-                    <div className="text-sm text-gray-500 dark:text-gray-400 order-2 sm:order-1">
-                      Menampilkan <span className="font-semibold text-gray-900 dark:text-white">{((page - 1) * pageSize) + 1}</span> sampai <span className="font-semibold text-gray-900 dark:text-white">{Math.min(page * pageSize, totalCount)}</span> dari <span className="font-semibold text-gray-900 dark:text-white">{totalCount}</span> data
+                  <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-700">
+                    <div className="text-sm text-slate-400 order-2 sm:order-1">
+                      Menampilkan <span className="font-semibold text-slate-100">{((page - 1) * pageSize) + 1}</span> sampai <span className="font-semibold text-slate-100">{Math.min(page * pageSize, totalCount)}</span> dari <span className="font-semibold text-slate-100">{totalCount}</span> data
                     </div>
 
                     <div className="flex items-center gap-4 order-1 sm:order-2 w-full sm:w-auto justify-between sm:justify-end">
                       <select
                         value={pageSize}
                         onChange={handlePageSizeChange}
-                        className="h-9 px-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-sm text-gray-700 dark:text-gray-300 outline-none focus:ring-2 focus:ring-brand-500"
+                        className="h-9 px-2 rounded-lg border border-slate-600 bg-slate-800 text-sm text-slate-300 outline-none focus:ring-2 focus:ring-indigo-500"
                       >
                         <option value={10}>10 / halaman</option>
                         <option value={25}>25 / halaman</option>
@@ -470,7 +470,7 @@ function App() {
                         <button
                           onClick={() => handlePageChange(page - 1)}
                           disabled={page === 1}
-                          className="p-2 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-40 disabled:cursor-not-allowed"
+                          className="p-2 rounded-lg border border-slate-700 text-slate-400 hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed"
                         >
                           <ChevronLeft size={16} />
                         </button>
@@ -479,14 +479,14 @@ function App() {
                           {getPageNumbers().map((p, idx) => (
                             <React.Fragment key={idx}>
                               {p === '...' ? (
-                                <span className="px-2 text-gray-400">...</span>
+                                <span className="px-2 text-slate-500">...</span>
                               ) : (
                                 <button
                                   onClick={() => handlePageChange(p as number)}
                                   className={`min-w-[32px] h-8 px-2 rounded-lg text-sm font-medium transition-colors ${
                                     page === p
-                                      ? 'bg-brand-600 text-white shadow-brand-500/30'
-                                      : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700'
+                                      ? 'bg-indigo-600 text-white shadow-indigo-500/30'
+                                      : 'text-slate-400 hover:bg-slate-700'
                                   }`}
                                 >
                                   {p}
@@ -495,15 +495,15 @@ function App() {
                             </React.Fragment>
                           ))}
                         </div>
-                        
-                        <div className="sm:hidden flex items-center px-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+
+                        <div className="sm:hidden flex items-center px-2 text-sm font-medium text-slate-300">
                           {page} / {totalPages}
                         </div>
 
                         <button
                           onClick={() => handlePageChange(page + 1)}
                           disabled={page === totalPages}
-                          className="p-2 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-40 disabled:cursor-not-allowed"
+                          className="p-2 rounded-lg border border-slate-700 text-slate-400 hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed"
                         >
                           <ChevronRight size={16} />
                         </button>
@@ -511,25 +511,25 @@ function App() {
                     </div>
                   </div>
                 )}
-                
+
                 {isFilterActive && totalCount > 0 && (
-                   <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-gray-100 dark:border-gray-700">
-                     <div className="text-sm text-gray-500 dark:text-gray-400 order-2 sm:order-1">
-                      Menampilkan <span className="font-semibold text-gray-900 dark:text-white">{((page - 1) * pageSize) + 1}</span> sampai <span className="font-semibold text-gray-900 dark:text-white">{Math.min(page * pageSize, totalCount)}</span> dari <span className="font-semibold text-gray-900 dark:text-white">{totalCount}</span> data
+                   <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-slate-700">
+                     <div className="text-sm text-slate-400 order-2 sm:order-1">
+                      Menampilkan <span className="font-semibold text-slate-100">{((page - 1) * pageSize) + 1}</span> sampai <span className="font-semibold text-slate-100">{Math.min(page * pageSize, totalCount)}</span> dari <span className="font-semibold text-slate-100">{totalCount}</span> data
                     </div>
                     <div className="flex items-center gap-2 order-1 sm:order-2">
                        <button
                           onClick={() => handlePageChange(page - 1)}
                           disabled={page === 1}
-                          className="p-2 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-40"
+                          className="p-2 rounded-lg border border-slate-700 text-slate-400 hover:bg-slate-700 disabled:opacity-40"
                         >
                           <ChevronLeft size={16} />
                         </button>
-                        <span className="text-sm font-medium">{page} / {totalPages}</span>
+                        <span className="text-sm font-medium text-slate-300">{page} / {totalPages}</span>
                         <button
                           onClick={() => handlePageChange(page + 1)}
                           disabled={page === totalPages}
-                          className="p-2 rounded-lg border border-gray-200 dark:border-gray-700 text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-40"
+                          className="p-2 rounded-lg border border-slate-700 text-slate-400 hover:bg-slate-700 disabled:opacity-40"
                         >
                           <ChevronRight size={16} />
                         </button>
@@ -543,12 +543,12 @@ function App() {
 
           {activeTab === 'settings' && (
              <div className="max-w-3xl mx-auto space-y-8 animate-in slide-in-from-bottom duration-300">
-              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden">
-                <div className="p-6 border-b border-gray-100 dark:border-gray-700"><h3 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2"><Settings className="w-5 h-5 text-gray-400" /> Preferensi Tampilan</h3></div>
+              <div className="bg-slate-800 rounded-2xl shadow-sm border border-slate-700 overflow-hidden">
+                <div className="p-6 border-b border-slate-700"><h3 className="text-lg font-bold text-slate-100 flex items-center gap-2"><Settings className="w-5 h-5 text-slate-500" /> Preferensi Tampilan</h3></div>
                 <div className="p-6">
                   <div className="flex items-center justify-between">
-                    <div><p className="font-medium text-gray-900 dark:text-white text-lg">Ubah Mode Gelap/Terang</p><p className="text-sm text-gray-500 mt-1">Sesuaikan tampilan antarmuka dengan kenyamanan mata Anda.</p></div>
-                    <button onClick={toggleTheme} className={`relative inline-flex h-8 w-14 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 ${theme === 'dark' ? 'bg-brand-600' : 'bg-gray-200'}`}><span className={`inline-block h-6 w-6 transform rounded-full bg-white transition-transform shadow-sm ${theme === 'dark' ? 'translate-x-7' : 'translate-x-1'}`} /></button>
+                    <div><p className="font-medium text-slate-100 text-lg">Ubah Mode Gelap/Terang</p><p className="text-sm text-slate-400 mt-1">Sesuaikan tampilan antarmuka dengan kenyamanan mata Anda.</p></div>
+                    <button onClick={toggleTheme} className={`relative inline-flex h-8 w-14 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${theme === 'dark' ? 'bg-indigo-500' : 'bg-slate-600'}`}><span className={`inline-block h-6 w-6 transform rounded-full bg-white transition-transform shadow-sm ${theme === 'dark' ? 'translate-x-7' : 'translate-x-1'}`} /></button>
                   </div>
                 </div>
               </div>

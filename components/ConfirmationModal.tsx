@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertTriangle, CheckCircle, Info } from 'lucide-react';
+import { AlertTriangle, CheckCircle } from 'lucide-react';
 
 interface ConfirmationModalProps {
   isOpen: boolean;
@@ -25,39 +25,39 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-      <div 
-        className="bg-white dark:bg-gray-800 rounded-2xl w-full max-w-sm shadow-2xl transform transition-all scale-100 border border-gray-100 dark:border-gray-700 overflow-hidden"
+    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-950/80 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+      <div
+        className="bg-slate-800 rounded-2xl w-full max-w-sm shadow-2xl transform transition-all scale-100 border border-slate-700 overflow-hidden"
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
       >
         <div className="p-6 text-center">
           <div className={`mx-auto w-14 h-14 rounded-full flex items-center justify-center mb-5 ${
-            variant === 'danger' ? 'bg-rose-100 text-rose-600 dark:bg-rose-900/30 dark:text-rose-400' : 
-            variant === 'warning' ? 'bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400' :
-            'bg-brand-100 text-brand-600 dark:bg-brand-900/30 dark:text-brand-400'
+            variant === 'danger' ? 'bg-rose-900/30 text-rose-400' :
+            variant === 'warning' ? 'bg-amber-900/30 text-amber-400' :
+            'bg-indigo-500/20 text-indigo-400'
           }`}>
-            {variant === 'danger' ? <AlertTriangle size={28} /> : 
-             variant === 'warning' ? <AlertTriangle size={28} /> : 
+            {variant === 'danger' ? <AlertTriangle size={28} /> :
+             variant === 'warning' ? <AlertTriangle size={28} /> :
              <CheckCircle size={28} />}
           </div>
-          <h3 id="modal-title" className="text-xl font-bold text-gray-900 dark:text-white mb-2">{title}</h3>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-8 leading-relaxed">{message}</p>
-          
+          <h3 id="modal-title" className="text-xl font-bold text-slate-100 mb-2">{title}</h3>
+          <p className="text-sm text-slate-400 mb-8 leading-relaxed">{message}</p>
+
           <div className="flex gap-3">
             <button
               onClick={onCancel}
-              className="flex-1 px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 font-medium hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors focus:ring-2 focus:ring-gray-200"
+              className="flex-1 px-4 py-2.5 rounded-xl border border-slate-600 text-slate-300 font-medium hover:bg-slate-700 transition-colors focus:ring-2 focus:ring-slate-600"
             >
               {cancelLabel}
             </button>
             <button
               onClick={onConfirm}
               className={`flex-1 px-4 py-2.5 rounded-xl text-white font-medium shadow-lg transition-all active:scale-95 focus:ring-2 focus:ring-offset-2 ${
-                variant === 'danger' 
-                  ? 'bg-rose-600 hover:bg-rose-700 shadow-rose-500/30 focus:ring-rose-500' 
-                  : 'bg-brand-600 hover:bg-brand-700 shadow-brand-500/30 focus:ring-brand-500'
+                variant === 'danger'
+                  ? 'bg-rose-600 hover:bg-rose-700 shadow-rose-500/30 focus:ring-rose-500'
+                  : 'bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-600 hover:to-violet-700 shadow-indigo-500/30 focus:ring-indigo-500'
               }`}
             >
               {confirmLabel}
