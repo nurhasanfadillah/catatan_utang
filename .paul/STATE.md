@@ -2,28 +2,35 @@
 
 ## Current Position
 
-Phase: 02 — NeonDB Migration — **In Progress (1/3 plans done)**
-Plan: 02-02 — Vercel API Routes — created, awaiting approval
-Status: PLAN created, ready for APPLY
-Last activity: 2026-06-20 — Created .paul/phases/02-neondb-migration/02-02-PLAN.md
+Phase: 02 — NeonDB Migration — **COMPLETE ✓**
+Plan: 02-03 — Frontend Migration — LOOP COMPLETE ✓
+Status: Phase 02 selesai — app live di production, Supabase 100% diganti NeonDB
+Last activity: 2026-06-20 — Phase 02 complete, 02-03 UNIFY selesai
 
 Progress:
-- Phase 01: [██████████] 100% (Vercel Migration — COMPLETE)
-- Phase 02: [███░░░░░░░] 33% (Plan 02-01 done; 02-02 awaiting apply; 02-03 pending)
+- Phase 01: [██████████] 100% (Vercel Migration — COMPLETE ✓)
+- Phase 02: [██████████] 100% (02-01 ✓, 02-02 ✓, 02-03 ✓ — COMPLETE ✓)
 
 ## Loop Position
 
 ```
 PLAN ──▶ APPLY ──▶ UNIFY
-  ✓        ○        ○     [Plan created, awaiting approval]
+  ✓        ✓        ✓     [Phase 02 complete — siap Phase 03]
 ```
 
 ## Session Continuity
 
 Last session: 2026-06-20
-Stopped at: Plan 02-02 created
-Next action: Review dan approve plan, lalu run /paul:apply .paul/phases/02-neondb-migration/02-02-PLAN.md
-Resume file: .paul/phases/02-neondb-migration/02-02-PLAN.md
+Stopped at: Phase 02 NeonDB Migration selesai penuh
+Next action: /paul:plan (Phase 03 — jika ada, atau milestone complete)
+Resume file: .paul/phases/02-neondb-migration/02-03-SUMMARY.md
+
+## Notes untuk sesi berikutnya
+- API routes pakai raw neon SQL (`neon()` dari `@neondatabase/serverless`) — BUKAN Drizzle ORM
+- Simple queries: tagged template `sql\`SELECT...\``; dynamic WHERE: `sql.query(str, params)` dengan `$1,$2,...`
+- date field dari NeonDB return ISO string (`2026-06-15T00:00:00.000Z`) — frontend harus handle parsing di 02-03
+- Admin password di NeonDB bukan 'admin123' — cek via Neon SQL Editor sebelum login testing di 02-03
+- Backdoor login (admin/root) masih di services/auth.ts frontend — tidak dipindah ke API
 
 ## Decisions
 
