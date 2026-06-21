@@ -372,7 +372,7 @@ function App() {
                     <h2 className="text-xl font-bold text-slate-100">Riwayat Lengkap</h2>
                     <p className="text-sm text-slate-400 mt-1">Daftar semua aktivitas keuangan yang tercatat.</p>
                   </div>
-                  <div className="flex flex-col items-center">
+                  <div className="flex flex-col items-center w-full sm:w-auto">
                     <span className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-1">Total Saldo</span>
                     <p className={`text-3xl font-bold tracking-tight ${globalTotalBalance < 0 ? 'text-rose-500' : 'text-indigo-500'}`}>
                       {formatCurrency(globalTotalBalance)}
