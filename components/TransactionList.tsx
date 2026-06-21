@@ -15,7 +15,7 @@ export const TransactionList: React.FC<TransactionListProps> = ({ transactions, 
 
   if (transactions.length === 0) {
     return (
-      <div className="text-center py-20 bg-slate-800 rounded-xl border border-slate-700">
+      <div className="text-center py-20 bg-slate-800 rounded-2xl border border-slate-700">
         <Inbox className="mx-auto mb-3 text-slate-600" size={40} />
         <p className="text-slate-400 font-medium">Tidak ada data ditemukan.</p>
         <p className="text-slate-500 text-sm mt-1">Coba ubah filter atau tambah data baru.</p>
@@ -28,7 +28,7 @@ export const TransactionList: React.FC<TransactionListProps> = ({ transactions, 
       {/* Mobile Card View */}
       <div className="grid grid-cols-1 gap-4 md:hidden">
         {transactions.map((t) => (
-          <div key={t.id} className="bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-700">
+          <div key={t.id} className="bg-slate-800 p-4 rounded-2xl shadow-sm border border-slate-700">
             <div className="flex justify-between items-start mb-2">
               <div className="flex items-center gap-2">
                 <span className={`p-1.5 rounded-full ${
@@ -76,15 +76,15 @@ export const TransactionList: React.FC<TransactionListProps> = ({ transactions, 
       </div>
 
       {/* Desktop Table View */}
-      <div className="hidden md:block bg-slate-800 rounded-xl shadow-sm border border-slate-700 overflow-hidden">
+      <div className="hidden md:block bg-slate-800 rounded-2xl shadow-sm border border-slate-700 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm text-left">
             <thead className="text-xs text-slate-400 uppercase bg-slate-900">
               <tr>
                 <th className="px-6 py-3 font-medium">Keterangan</th>
                 <th className="px-6 py-3 font-medium text-center">Tanggal</th>
-                <th className="px-6 py-3 font-medium text-right text-emerald-600">Tagihan (Masuk)</th>
-                <th className="px-6 py-3 font-medium text-right text-rose-600">Kasbon (Keluar)</th>
+                <th className="px-6 py-3 font-medium text-right text-emerald-500">Tagihan (Masuk)</th>
+                <th className="px-6 py-3 font-medium text-right text-rose-500">Kasbon (Keluar)</th>
                 <th className="px-6 py-3 font-medium text-right">Saldo</th>
                 {canEdit && <th className="px-6 py-3 font-medium text-center">Aksi</th>}
               </tr>

@@ -68,25 +68,25 @@ export const TransactionForm: React.FC<TransactionFormProps> = ({ isOpen, onClos
           <div className="overflow-y-auto p-6">
             <form id="transaction-form" onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-1.5">Tanggal Transaksi</label>
+                <label className="block text-sm font-medium text-slate-400 mb-1.5">Tanggal Transaksi</label>
                 <input
                   type="date"
                   required
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-600 bg-slate-700/50 text-slate-100 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-700 bg-slate-700 text-slate-100 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-1.5">Jenis Transaksi</label>
+                <label className="block text-sm font-medium text-slate-400 mb-1.5">Jenis Transaksi</label>
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     type="button"
                     onClick={() => setType(TransactionType.INCOME)}
                     className={`py-3 px-4 rounded-xl font-medium transition-all duration-200 flex flex-col items-center justify-center gap-1 ${
                       type === TransactionType.INCOME
-                        ? 'bg-emerald-50 text-emerald-700 border-2 border-emerald-500 dark:bg-emerald-900/20 dark:text-emerald-300'
+                        ? 'bg-emerald-900/20 text-emerald-300 border-2 border-emerald-500'
                         : 'bg-slate-700/30 text-slate-400 border-2 border-transparent hover:bg-slate-700'
                     }`}
                   >
@@ -97,7 +97,7 @@ export const TransactionForm: React.FC<TransactionFormProps> = ({ isOpen, onClos
                     onClick={() => setType(TransactionType.EXPENSE)}
                     className={`py-3 px-4 rounded-xl font-medium transition-all duration-200 flex flex-col items-center justify-center gap-1 ${
                       type === TransactionType.EXPENSE
-                        ? 'bg-rose-50 text-rose-700 border-2 border-rose-500 dark:bg-rose-900/20 dark:text-rose-300'
+                        ? 'bg-rose-900/20 text-rose-300 border-2 border-rose-500'
                         : 'bg-slate-700/30 text-slate-400 border-2 border-transparent hover:bg-slate-700'
                     }`}
                   >
@@ -107,19 +107,19 @@ export const TransactionForm: React.FC<TransactionFormProps> = ({ isOpen, onClos
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-1.5">Keterangan</label>
+                <label className="block text-sm font-medium text-slate-400 mb-1.5">Keterangan</label>
                 <input
                   type="text"
                   required
                   placeholder="Contoh: Pembayaran Invoice #001"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-600 bg-slate-700/50 text-slate-100 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all placeholder:text-slate-500"
+                  className="w-full px-4 py-2.5 rounded-xl border border-slate-700 bg-slate-700 text-slate-100 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all placeholder:text-slate-500"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-300 mb-1.5">Nominal (Rp)</label>
+                <label className="block text-sm font-medium text-slate-400 mb-1.5">Nominal (Rp)</label>
                 <div className="relative">
                   <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-medium">Rp</span>
                   <input
@@ -129,18 +129,18 @@ export const TransactionForm: React.FC<TransactionFormProps> = ({ isOpen, onClos
                     placeholder="0"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
-                    className="w-full pl-12 pr-4 py-2.5 rounded-xl border border-slate-600 bg-slate-700/50 text-slate-100 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all placeholder:text-slate-500"
+                    className="w-full pl-12 pr-4 py-2.5 rounded-xl border border-slate-700 bg-slate-700 text-slate-100 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all placeholder:text-slate-500"
                   />
                 </div>
               </div>
             </form>
           </div>
 
-          <div className="p-6 border-t border-slate-700 bg-slate-900/50 flex gap-3">
+          <div className="p-6 border-t border-slate-700 bg-slate-900 flex gap-3">
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-4 py-2.5 rounded-xl border border-slate-600 text-slate-300 font-medium hover:bg-slate-700 transition-colors"
+              className="flex-1 px-4 py-2.5 rounded-xl border border-slate-700 text-slate-400 font-medium hover:bg-slate-700 transition-colors"
             >
               Batal
             </button>

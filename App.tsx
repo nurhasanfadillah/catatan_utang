@@ -317,7 +317,7 @@ function App() {
         <div className="fixed inset-0 z-[70] bg-black/20 backdrop-blur-[1px] flex items-center justify-center">
           <div className="bg-slate-800 p-4 rounded-2xl shadow-xl flex items-center gap-3">
              <Loader2 className="animate-spin text-indigo-400" size={24} />
-             <span className="font-medium text-slate-200">
+             <span className="font-medium text-slate-100">
                {isExporting ? 'Menyiapkan PDF...' : 'Memproses Data...'}
              </span>
           </div>
@@ -374,16 +374,16 @@ function App() {
                   </div>
                   <div className="flex flex-col items-end">
                     <span className="text-xs font-medium text-slate-400 uppercase tracking-wider mb-1">Total Saldo</span>
-                    <p className={`text-3xl font-bold tracking-tight ${globalTotalBalance < 0 ? 'text-rose-500' : 'text-indigo-400'}`}>
+                    <p className={`text-3xl font-bold tracking-tight ${globalTotalBalance < 0 ? 'text-rose-500' : 'text-indigo-500'}`}>
                       {formatCurrency(globalTotalBalance)}
                     </p>
                   </div>
                 </div>
 
                 {/* Filter Bar */}
-                <div className="bg-slate-900/50 p-4 rounded-xl mb-6 border border-slate-700/50 transition-all duration-300">
+                <div className="bg-slate-900 p-4 rounded-xl mb-6 border border-slate-700 transition-all duration-300">
                   <div className="flex items-center justify-between mb-2">
-                    <button onClick={() => setIsFilterOpen(!isFilterOpen)} className="flex items-center gap-2 text-sm font-semibold text-slate-300 focus:outline-none hover:text-indigo-400 transition-colors">
+                    <button onClick={() => setIsFilterOpen(!isFilterOpen)} className="flex items-center gap-2 text-sm font-semibold text-slate-400 focus:outline-none hover:text-indigo-400 transition-colors">
                       <Filter size={16} className="text-indigo-500" />
                       <span>Filter Data</span>
                       {isFilterOpen ? <ChevronUp size={16} className="text-slate-500" /> : <ChevronDown size={16} className="text-slate-500" />}
@@ -399,7 +399,7 @@ function App() {
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4 mt-4 animate-in fade-in slide-in-from-top-2 duration-200">
                       <div className="md:col-span-4">
                         <label className="block text-xs font-medium text-slate-400 mb-1.5">Jenis Transaksi</label>
-                        <select value={filterType} onChange={(e) => setFilterType(e.target.value as any)} className="w-full h-[42px] px-3 rounded-lg border border-slate-600 bg-slate-800 text-slate-100 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+                        <select value={filterType} onChange={(e) => setFilterType(e.target.value as any)} className="w-full h-[42px] px-3 rounded-lg border border-slate-700 bg-slate-800 text-slate-100 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
                           <option value="ALL">Semua Transaksi</option>
                           <option value={TransactionType.INCOME}>Tagihan (Masuk)</option>
                           <option value={TransactionType.EXPENSE}>Kasbon (Keluar)</option>
@@ -410,13 +410,13 @@ function App() {
                         <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-2">
                           <div className="relative flex-1 w-full">
                             <Calendar size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-                            <input type="date" value={dateRange.start} onChange={(e) => setDateRange({...dateRange, start: e.target.value})} className="w-full h-[42px] pl-10 pr-3 rounded-lg border border-slate-600 bg-slate-800 text-slate-100 text-sm focus:ring-2 focus:ring-indigo-500 outline-none" />
+                            <input type="date" value={dateRange.start} onChange={(e) => setDateRange({...dateRange, start: e.target.value})} className="w-full h-[42px] pl-10 pr-3 rounded-lg border border-slate-700 bg-slate-800 text-slate-100 text-sm focus:ring-2 focus:ring-indigo-500 outline-none" />
                           </div>
                           <span className="hidden sm:block text-slate-400"><ArrowRight size={16} /></span>
                           <span className="sm:hidden text-slate-400 text-xs text-center font-medium">s/d</span>
                           <div className="relative flex-1 w-full">
                             <Calendar size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-                            <input type="date" value={dateRange.end} onChange={(e) => setDateRange({...dateRange, end: e.target.value})} className="w-full h-[42px] pl-10 pr-3 rounded-lg border border-slate-600 bg-slate-800 text-slate-100 text-sm focus:ring-2 focus:ring-indigo-500 outline-none" />
+                            <input type="date" value={dateRange.end} onChange={(e) => setDateRange({...dateRange, end: e.target.value})} className="w-full h-[42px] pl-10 pr-3 rounded-lg border border-slate-700 bg-slate-800 text-slate-100 text-sm focus:ring-2 focus:ring-indigo-500 outline-none" />
                           </div>
                         </div>
                       </div>
@@ -424,15 +424,15 @@ function App() {
                   )}
 
                    {isFilterActive && (
-                    <div className="mt-4 pt-4 border-t border-slate-700/50 flex flex-wrap gap-4 text-sm animate-in fade-in">
+                    <div className="mt-4 pt-4 border-t border-slate-700 flex flex-wrap gap-4 text-sm animate-in fade-in">
                       <span className="text-xs text-slate-500 self-center">Halaman ini:</span>
-                      <div className="px-3 py-1 rounded-full bg-emerald-900/20 text-emerald-300 border border-emerald-800/30">
+                      <div className="px-3 py-1 rounded-full bg-emerald-900/20 text-emerald-400 border border-emerald-800/30">
                         <span className="text-xs opacity-70">Masuk:</span> <strong>{formatCurrency(processedData.summary.income)}</strong>
                       </div>
-                      <div className="px-3 py-1 rounded-full bg-rose-900/20 text-rose-300 border border-rose-800/30">
+                      <div className="px-3 py-1 rounded-full bg-rose-900/20 text-rose-400 border border-rose-800/30">
                         <span className="text-xs opacity-70">Keluar:</span> <strong>{formatCurrency(processedData.summary.expense)}</strong>
                       </div>
-                      <div className="px-3 py-1 rounded-full bg-slate-700 text-slate-300">
+                      <div className="px-3 py-1 rounded-full bg-slate-700 text-slate-400">
                         <span className="text-xs opacity-70">Data:</span> <strong>{processedData.summary.count} transaksi</strong>
                       </div>
                     </div>
@@ -464,7 +464,7 @@ function App() {
                         <select
                           value={pageSize}
                           onChange={handlePageSizeChange}
-                          className="h-9 px-2 rounded-lg border border-slate-600 bg-slate-800 text-sm text-slate-300 outline-none focus:ring-2 focus:ring-indigo-500"
+                          className="h-9 px-2 rounded-lg border border-slate-700 bg-slate-800 text-sm text-slate-400 outline-none focus:ring-2 focus:ring-indigo-500"
                         >
                           <option value={10}>10 / halaman</option>
                           <option value={25}>25 / halaman</option>
@@ -505,7 +505,7 @@ function App() {
                           </div>
                         )}
 
-                        <div className={`flex items-center px-2 text-sm font-medium text-slate-300 ${!isFilterActive ? 'sm:hidden' : ''}`}>
+                        <div className={`flex items-center px-2 text-sm font-medium text-slate-400 ${!isFilterActive ? 'sm:hidden' : ''}`}>
                           {page} / {totalPages}
                         </div>
 

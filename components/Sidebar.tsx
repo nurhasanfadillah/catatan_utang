@@ -45,7 +45,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       <aside className={`
         fixed inset-y-0 left-0 z-30
-        bg-white dark:bg-slate-900 border-r border-gray-200 dark:border-slate-800
+        bg-slate-900 border-r border-slate-700
         transform transition-all duration-300 ease-in-out
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
         md:translate-x-0
@@ -54,13 +54,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
         w-72 shadow-xl md:shadow-none
       `}>
         {/* Sidebar Header */}
-        <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'justify-between'} p-6 h-20 border-b border-gray-100 dark:border-slate-800 relative`}>
+        <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'justify-between'} p-6 h-20 border-b border-slate-700 relative`}>
           <div className="flex items-center gap-3 overflow-hidden">
             <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-violet-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-indigo-500/30 flex-shrink-0">
               K
             </div>
             <div className={`transition-all duration-300 ${isCollapsed ? 'w-0 opacity-0 hidden' : 'w-auto opacity-100'}`}>
-              <h1 className="text-lg font-bold text-gray-900 dark:text-white leading-tight whitespace-nowrap">Keuangan</h1>
+              <h1 className="text-lg font-bold text-white leading-tight whitespace-nowrap">Keuangan</h1>
               <p className="text-xs text-slate-400 whitespace-nowrap">Financial Manager</p>
             </div>
           </div>
@@ -72,7 +72,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         {/* Desktop Collapse Button */}
         <button
           onClick={toggleCollapse}
-          className="hidden md:flex absolute -right-3 top-24 z-40 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 p-1.5 rounded-full shadow-sm hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+          className="hidden md:flex absolute -right-3 top-24 z-40 bg-slate-900 border border-slate-700 text-slate-400 p-1.5 rounded-full shadow-sm hover:text-indigo-400 transition-colors"
           title={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
         >
           {isCollapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
@@ -89,7 +89,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   ${isCollapsed ? 'justify-center px-0' : 'px-4'}
                   ${activeTab === tab
                     ? 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border-l-2 border-indigo-500 font-semibold'
-                    : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'}
+                    : 'text-slate-400 hover:bg-slate-800'}
                 `}
                 title={isCollapsed ? (tab === 'data' ? 'Data Kasbon' : tab.charAt(0).toUpperCase() + tab.slice(1)) : ''}
               >
@@ -104,9 +104,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
             ))}
           </div>
 
-          <div className="p-4 border-t border-gray-100 dark:border-slate-800 bg-white dark:bg-slate-900">
+          <div className="p-4 border-t border-slate-700 bg-slate-900">
              <div className={`
-               bg-gray-50 dark:bg-slate-800/50 rounded-2xl border border-gray-100 dark:border-slate-700 mb-2 transition-all duration-200
+               bg-slate-800 rounded-2xl border border-slate-700 mb-2 transition-all duration-200
                ${isCollapsed ? 'p-2 flex justify-center bg-transparent border-0' : 'p-3'}
              `}>
                 <div className={`flex items-center ${isCollapsed ? 'justify-center' : 'gap-3'}`}>
@@ -117,15 +117,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     {user.name.charAt(0)}
                   </div>
                   <div className={`flex-1 min-w-0 transition-all duration-200 ${isCollapsed ? 'w-0 opacity-0 hidden' : 'w-auto opacity-100'}`}>
-                    <p className="text-sm font-semibold text-gray-900 dark:text-white truncate">{user.name}</p>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 truncate capitalize">{user.role}</p>
+                    <p className="text-sm font-semibold text-white truncate">{user.name}</p>
+                    <p className="text-xs text-slate-400 truncate capitalize">{user.role}</p>
                   </div>
                 </div>
              </div>
              <button
                 onClick={onLogout}
                 className={`
-                  w-full flex items-center gap-2 p-2.5 text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-900/20 rounded-xl transition-colors text-sm font-medium
+                  w-full flex items-center gap-2 p-2.5 text-rose-500 hover:bg-rose-900/20 rounded-xl transition-colors text-sm font-medium
                   ${isCollapsed ? 'justify-center' : 'justify-center'}
                 `}
                 title={isCollapsed ? "Keluar Aplikasi" : ""}

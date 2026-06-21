@@ -35,19 +35,19 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose, onExp
 
         <form onSubmit={handleSubmit} className="p-6 space-y-5">
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1.5">Judul Laporan</label>
+            <label className="block text-sm font-medium text-slate-400 mb-1.5">Judul Laporan</label>
             <input
               type="text"
               required
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="Contoh: Laporan Keuangan November"
-              className="w-full px-4 py-2.5 rounded-xl border border-slate-600 bg-slate-700/50 text-slate-100 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all placeholder:text-slate-500"
+              className="w-full px-4 py-2.5 rounded-xl border border-slate-700 bg-slate-700 text-slate-100 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all placeholder:text-slate-500"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-1.5">Periode Laporan</label>
+            <label className="block text-sm font-medium text-slate-400 mb-1.5">Periode Laporan</label>
             <div className="grid grid-cols-2 gap-3">
               <div className="relative">
                 <Calendar size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
@@ -55,7 +55,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose, onExp
                   type="date"
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-600 bg-slate-700/50 text-slate-100 text-sm focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-700 bg-slate-700 text-slate-100 text-sm focus:ring-2 focus:ring-indigo-500 outline-none"
                 />
               </div>
               <div className="relative">
@@ -64,7 +64,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose, onExp
                   type="date"
                   value={endDate}
                   onChange={(e) => setEndDate(e.target.value)}
-                  className="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-600 bg-slate-700/50 text-slate-100 text-sm focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full pl-10 pr-3 py-2.5 rounded-xl border border-slate-700 bg-slate-700 text-slate-100 text-sm focus:ring-2 focus:ring-indigo-500 outline-none"
                 />
               </div>
             </div>
@@ -75,7 +75,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({ isOpen, onClose, onExp
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 px-4 py-2.5 rounded-xl border border-slate-600 text-slate-300 font-medium hover:bg-slate-700 transition-colors"
+              className="flex-1 px-4 py-2.5 rounded-xl border border-slate-700 text-slate-400 font-medium hover:bg-slate-700 transition-colors"
             >
               Batal
             </button>

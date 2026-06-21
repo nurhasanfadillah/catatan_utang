@@ -20,7 +20,7 @@ const variantConfig: Record<StatsCardVariant, {
   iconColor: string;
 }> = {
   balance: {
-    wrapper: 'bg-gradient-to-br from-indigo-500 via-purple-600 to-violet-700 shadow-lg shadow-indigo-500/25',
+    wrapper: 'bg-gradient-to-br from-indigo-500 to-violet-600 shadow-lg shadow-indigo-500/25',
     titleColor: 'text-indigo-100',
     valueColor: 'text-white',
     valueSize: 'text-4xl',
@@ -28,17 +28,17 @@ const variantConfig: Record<StatsCardVariant, {
     iconColor: 'text-white',
   },
   income: {
-    wrapper: 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 border-l-4 border-l-emerald-500',
+    wrapper: 'bg-slate-800 border border-slate-700 border-l-4 border-l-emerald-500',
     titleColor: 'text-slate-500 dark:text-slate-400',
-    valueColor: 'text-slate-900 dark:text-white',
+    valueColor: 'text-white',
     valueSize: 'text-2xl',
     iconBg: 'bg-emerald-500/10',
     iconColor: 'text-emerald-500',
   },
   expense: {
-    wrapper: 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 border-l-4 border-l-rose-500',
+    wrapper: 'bg-slate-800 border border-slate-700 border-l-4 border-l-rose-500',
     titleColor: 'text-slate-500 dark:text-slate-400',
-    valueColor: 'text-slate-900 dark:text-white',
+    valueColor: 'text-white',
     valueSize: 'text-2xl',
     iconBg: 'bg-rose-500/10',
     iconColor: 'text-rose-500',
@@ -48,7 +48,7 @@ const variantConfig: Record<StatsCardVariant, {
 export const StatsCard: React.FC<StatsCardProps> = ({ title, value, icon: Icon, variant }) => {
   const { wrapper, titleColor, valueColor, valueSize, iconBg, iconColor } = variantConfig[variant];
   return (
-    <div className={`rounded-xl p-6 ${wrapper}`}>
+    <div className={`rounded-2xl p-6 ${wrapper}`}>
       <div className="flex items-center justify-between">
         <div>
           <p className={`text-sm font-medium ${titleColor}`}>{title}</p>

@@ -22,13 +22,13 @@ export const Header: React.FC<HeaderProps> = ({
   isAdmin
 }) => {
   return (
-    <header className="h-20 flex items-center justify-between px-6 md:px-8 bg-white dark:bg-slate-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-slate-800 z-10 sticky top-0">
+    <header className="h-20 flex items-center justify-between px-6 md:px-8 bg-slate-900 border-b border-slate-700 z-10 sticky top-0">
       <div className="flex items-center gap-4">
-        <button onClick={onOpenSidebar} className="md:hidden p-2 rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800">
+        <button onClick={onOpenSidebar} className="md:hidden p-2 rounded-lg text-slate-400 hover:bg-slate-800">
           <Menu size={24} />
         </button>
         <div>
-          <h1 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-white capitalize">
+          <h1 className="text-xl md:text-2xl font-bold text-white capitalize">
             {activeTab === 'dashboard' ? 'Dashboard Overview' : activeTab === 'data' ? 'Manajemen Data' : 'Pengaturan Sistem'}
           </h1>
           <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 hidden sm:block">
@@ -41,13 +41,13 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </div>
       <div className="flex items-center gap-2 md:gap-4">
-        <button onClick={toggleTheme} className="p-2.5 rounded-xl text-slate-500 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 transition-all border border-slate-200 dark:border-slate-700 hidden sm:flex">
+        <button onClick={toggleTheme} className="p-2.5 rounded-xl text-slate-400 bg-slate-800 hover:bg-slate-700 transition-all border border-slate-700 hidden sm:flex">
           {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
         </button>
 
         {activeTab !== 'dashboard' && (
           <>
-            <button onClick={onOpenExport} className="flex items-center justify-center p-2.5 sm:px-4 sm:py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
+            <button onClick={onOpenExport} className="flex items-center justify-center p-2.5 sm:px-4 sm:py-2.5 rounded-xl border border-slate-700 text-slate-400 hover:bg-slate-800 transition-all">
               <FileDown size={20} />
               <span className="hidden sm:inline ml-2 font-medium">Ekspor</span>
             </button>
